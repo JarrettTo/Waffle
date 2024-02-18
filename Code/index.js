@@ -7,7 +7,11 @@ for(let i=0;i<collisionMap.length;i+=70){
     collisionMapFtd.push(collisionMap.slice(i,i+70))
 
 } 
+const battleZoneMap = []
+for(let i=0;i<battleZonesData.length;i+=70){
+    battleZoneMap.push(battleZonesData.slice(i,i+70))
 
+} 
 
 c.fillStyle="white"
 c.fillRect(0,0,canvas.width, canvas.height)
@@ -44,6 +48,7 @@ const offset = {
     x: -500,
     y: -1600
 }
+
 const player = new Sprite({
     position:{
         x: (canvas.width/2)+ 120/2+40,
@@ -89,7 +94,22 @@ collisionMapFtd.forEach((row,i) =>{
         
     })
 })
-const movables = [background,...boundaries,foreground]
+
+const battleZones=[]
+battleZoneMap.forEach((row,i) =>{
+    row.forEach((sym,j)=>{
+        if(sym === 552){
+            battleZones.push(new Boundary({
+                position: {
+                    x: j * 64 + offset.x,
+                    y: i * 64 + offset.y
+                }
+            }))
+        }
+        
+    })
+})
+const movables = [background,...boundaries,foreground, ...battleZones]
 function rectCollision({rect1, rect2}){
     return(
         rect1.position.x + rect1.width >= rect2.position.x && 
@@ -98,8 +118,11 @@ function rectCollision({rect1, rect2}){
         rect1.position.y + rect1.height>= rect2.position.y 
     )
 }
+const battle={
+    initiated: false
+}
 function animate(){
-    window.requestAnimationFrame(animate)
+    const animationId = window.requestAnimationFrame(animate)
     let moving = true
     background.draw()
     
@@ -107,9 +130,58 @@ function animate(){
         boundary.draw()
         
     })
+    battleZones.forEach(battleZone =>{
+        battleZone.draw()
+        
+    })
     player.draw()
     foreground.draw()
     player.moving=false
+    if(battle.initiated){
+        return
+    }
+    if(keys.w.pressed || keys.a.pressed || keys.s.pressed|| keys.d.pressed ){
+        for (let i = 0; i < battleZones.length; i++) {
+            const battleZone = battleZones[i]
+            const overlappingArea =
+                (Math.min(
+                player.position.x + player.width,
+                battleZone.position.x + battleZone.width
+                ) -
+                Math.max(player.position.x, battleZone.position.x)) *
+                (Math.min(
+                player.position.y + player.height,
+                battleZone.position.y + battleZone.height
+                ) -
+                Math.max(player.position.y, battleZone.position.y))
+            if (
+              rectCollision({
+                rect1: player,
+                rect2: {
+                  ...battleZone,
+                  position: {
+                    x: battleZone.position.x,
+                    y: battleZone.position.y
+                  }
+                }
+              }) 
+            ) {
+            
+                console.log("ILY")
+                window.cancelAnimationFrame(animationId)
+                battle.initiated = true
+                player.moving=false
+                gsap.to('#overlappingDiv',{
+                    opacity:1,
+                    repeat:4,
+                    yoyo: true,
+                    duration: 0.4
+                })
+                animateBattle();
+                break
+            }
+        }
+    }
     if(keys.w.pressed && lastkey ==='w'){
         player.moving = true
         player.image=player.sprites.up
@@ -127,6 +199,7 @@ function animate(){
                 }
               })
             ) {
+                
               moving = false
               break
             }
@@ -158,12 +231,14 @@ function animate(){
               moving = false
               break
             }
-          }
+        }
+        
       
-          if (moving)
+      
+        if (moving)
             movables.forEach((movable) => {
             movable.position.x += 3
-            })
+        })
         
     }
     else if(keys.s.pressed && lastkey ==='s'){
@@ -222,6 +297,10 @@ function animate(){
     }
 }
 animate()
+function animateBattle(){
+    window.requestAnimationFrame(animateBattle)
+    console.log("Animating Battle")
+}
 let lastkey=''
 window.addEventListener('keydown',(e) =>{
     switch(e.key){
