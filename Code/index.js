@@ -13,6 +13,8 @@ c.fillStyle="white"
 c.fillRect(0,0,canvas.width, canvas.height)
 const image = new Image()
 image.src = '../Game Assets/WaffleVille.png'
+const foregroundImage = new Image()
+foregroundImage.src = '../Game Assets/Foreground.png'
 const playerImage = new Image()
 playerImage.src = '../Game Assets/Character/down.png' 
 const keys = {
@@ -53,8 +55,8 @@ const offset = {
 }
 const player = new Sprite({
     position:{
-        x: (canvas.width/2)+ 96/2+40,
-        y: (canvas.height/2)-32/2
+        x: (canvas.width/2)+ 120/2+40,
+        y: (canvas.height/2)-40/2
     },
     bg: playerImage,
     frames: {
@@ -68,6 +70,13 @@ const background = new Sprite({
     },
     bg: image
 })
+const foreground = new Sprite({
+    position: {
+      x: offset.x,
+      y: offset.y
+    },
+    bg: foregroundImage
+  })
 class Boundary{
     constructor({position}){
         this.position = position
@@ -75,7 +84,7 @@ class Boundary{
         this.height =64
     }
     draw(){
-        c.fillStyle='red'
+        c.fillStyle='rgba(255,0,0,0)'
         c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 }
@@ -94,7 +103,7 @@ collisionMapFtd.forEach((row,i) =>{
         
     })
 })
-const movables = [background,...boundaries]
+const movables = [background,...boundaries,foreground]
 function rectCollision({rect1, rect2}){
     return(
         rect1.position.x + rect1.width >= rect2.position.x && 
@@ -113,6 +122,7 @@ function animate(){
         
     })
     player.draw()
+    foreground.draw()
     if(keys.w.pressed && lastkey ==='w'){
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
