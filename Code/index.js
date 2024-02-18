@@ -105,39 +105,114 @@ function rectCollision({rect1, rect2}){
 }
 function animate(){
     window.requestAnimationFrame(animate)
-    
+    let moving = true
     background.draw()
-    player.draw()
+    
     boundaries.forEach(boundary =>{
         boundary.draw()
-        if(
-            rectCollision({
-                rect1: player,
-                rect2: boundary
-            })
-        ){
-            console.log("COL")
-        }
+        
     })
-    
+    player.draw()
     if(keys.w.pressed && lastkey ==='w'){
-        movables.forEach((movable)=>{
-            movable.position.y+=3
+        for (let i = 0; i < boundaries.length; i++) {
+            const boundary = boundaries[i]
+            if (
+              rectCollision({
+                rect1: player,
+                rect2: {
+                  ...boundary,
+                  position: {
+                    x: boundary.position.x,
+                    y: boundary.position.y + 3
+                  }
+                }
+              })
+            ) {
+              moving = false
+              break
+            }
+        }
+        if (moving)
+                movables.forEach((movable) => {
+                    movable.position.y += 3
+                })
+        
+            
+    }
+    else if(keys.a.pressed && lastkey ==='a'){
+        for (let i = 0; i < boundaries.length; i++) {
+            const boundary = boundaries[i]
+            if (
+              rectCollision({
+                rect1: player,
+                rect2: {
+                  ...boundary,
+                  position: {
+                    x: boundary.position.x + 3,
+                    y: boundary.position.y
+                  }
+                }
+              })
+            ) {
+              moving = false
+              break
+            }
+          }
+      
+          if (moving)
+            movables.forEach((movable) => {
+            movable.position.x += 3
+            })
+        
+    }
+    else if(keys.s.pressed && lastkey ==='s'){
+        for (let i = 0; i < boundaries.length; i++) {
+            const boundary = boundaries[i]
+            if (
+                rectCollision({
+                    rect1: player,
+                    rect2: {
+                    ...boundary,
+                    position: {
+                        x: boundary.position.x,
+                        y: boundary.position.y - 3
+                    }
+                    }
+                })
+            ) {
+                moving = false
+                break
+            }
+        }
+      
+        if (moving)
+            movables.forEach((movable) => {
+            movable.position.y -= 3
         })
     }
-    if(keys.a.pressed && lastkey ==='a'){
-        movables.forEach((movable)=>{
-            movable.position.x+=3
-        })
-    }
-    if(keys.s.pressed && lastkey ==='s'){
-        movables.forEach((movable)=>{
-            movable.position.y-=3
-        })
-    }
-    if(keys.d.pressed && lastkey ==='d'){
-        movables.forEach((movable)=>{
-            movable.position.x-=3
+    else if(keys.d.pressed && lastkey ==='d'){
+        for (let i = 0; i < boundaries.length; i++) {
+            const boundary = boundaries[i]
+            if (
+                rectCollision({
+                    rect1: player,
+                    rect2: {
+                    ...boundary,
+                    position: {
+                        x: boundary.position.x - 3,
+                        y: boundary.position.y
+                    }
+                    }
+                })
+            ){
+                moving = false
+                break
+            }
+        }
+      
+        if (moving)
+            movables.forEach((movable) => {
+            movable.position.x -= 3
         })
     }
 }
