@@ -1,0 +1,97 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "Game Assets/Basic_Furniture.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Game Assets/Basic_Grass_Biom_things.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Basic_Plants.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Chest.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Collision.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Fences.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Free Cow Sprites.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Free_Chicken_House.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Hills.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Map.tmx": {
+            "scale": 0.9143749999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 561.0389610389611,
+                "y": 320.4374572795626
+            }
+        },
+        "Game Assets/Paths.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Tilled_Dirt.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Waffle.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Water.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Wood_Bridge.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Wooden House.tsx": {
+            "scaleInDock": 1
+        },
+        "char.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 5.5
+        },
+        "preview.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "C:/Game/Game Assets",
+    "last.imagePath": "C:/Game/Game Assets",
+    "map.height": 1,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.width": 3,
+    "openFiles": [
+        "preview.tsx",
+        "char.tsx",
+        "Game Assets/Map.tmx",
+        "Game Assets/Basic_Furniture.tsx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "preview.tsx",
+        "Game Assets/Basic_Furniture.tsx",
+        "Game Assets/Map.tmx",
+        "char.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

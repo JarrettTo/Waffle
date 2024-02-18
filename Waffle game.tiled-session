@@ -1,3 +1,152 @@
 {
-    "exportAsImage.useCurrentScale": true
+    "activeFile": "Game Assets/Map.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "exportAsImage.useCurrentScale": true,
+    "fileStates": {
+        "Basic_Furniture.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Basic_Grass_Biom_things.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Basic_Plants.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 8
+        },
+        "Chest.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Collision.tsx": {
+            "scaleInDock": 5.5,
+            "scaleInEditor": 1
+        },
+        "Fences.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Free Cow Sprites.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 1
+        },
+        "Free_Chicken_House.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Game Assets/Basic_Furniture.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Basic_Grass_Biom_things.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Basic_Plants.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Chest.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Collision.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Fences.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Free Cow Sprites.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Free_Chicken_House.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Hills.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Map.tmx": {
+            "scale": 0.9143749999999999,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 561.0389610389611,
+                "y": 320.4374572795626
+            }
+        },
+        "Game Assets/Paths.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Tilled_Dirt.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Waffle.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Water.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Wood_Bridge.tsx": {
+            "scaleInDock": 1
+        },
+        "Game Assets/Wooden House.tsx": {
+            "scaleInDock": 1
+        },
+        "Grass.tsx": {
+            "scaleInDock": 1
+        },
+        "Hills.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Map.tmx": {
+            "scale": 4,
+            "selectedLayer": 32,
+            "viewCenter": {
+                "x": 248,
+                "y": 481.5
+            }
+        },
+        "Paths.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Tilled_Dirt.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        },
+        "Waffle.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 3
+        },
+        "Water.tsx": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Wood_Bridge.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Wooden House.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 1
+        }
+    },
+    "openFiles": [
+        "Map.tmx",
+        "Game Assets/Map.tmx"
+    ],
+    "project": "Waffle game.tiled-project",
+    "recentFiles": [
+        "Map.tmx",
+        "Game Assets/Map.tmx",
+        "Waffle.tsx",
+        "Collision.tsx",
+        "Free Cow Sprites.tsx",
+        "Basic_Plants.tsx",
+        "Chest.tsx",
+        "Free_Chicken_House.tsx",
+        "Paths.tsx",
+        "Basic_Grass_Biom_things.tsx",
+        "Tilled_Dirt.tsx",
+        "Basic_Furniture.tsx"
+    ]
 }
