@@ -6,7 +6,7 @@ const collisionMapFtd = []
 for(let i=0;i<collisionMap.length;i+=70){
     collisionMapFtd.push(collisionMap.slice(i,i+70))
 
-}
+} 
 
 
 c.fillStyle="white"
@@ -17,6 +17,12 @@ const foregroundImage = new Image()
 foregroundImage.src = '../Game Assets/Foreground.png'
 const playerImage = new Image()
 playerImage.src = '../Game Assets/Character/down.png' 
+const playerUpImage = new Image()
+playerUpImage.src = '../Game Assets/Character/up.png' 
+const playerLeftImage = new Image()
+playerLeftImage.src = '../Game Assets/Character/left.png' 
+const playerRightImage = new Image()
+playerRightImage.src = '../Game Assets/Character/right.png'
 const keys = {
     w: {
         pressed: false
@@ -32,22 +38,7 @@ const keys = {
     },
 }
 
-class Sprite {
-    constructor({position, velocity, bg, frames={max:1}}){
-        this.position = position
-        this.image = bg
-        this.frames=frames
-        this.image.onload=()=>{
-            this.width = this.image.width / this.frames.max
-            this.height = this.image.height
-        
-        }
-        
-    }
-    draw (){
-        c.drawImage(this.image,0,0,this.image.width/this.frames.max,this.image.height,this.position.x,this.position.y,this.image.width/this.frames.max,this.image.height)
-    }
-}
+
 //(canvas.width/2)+ this.image.width/2+40, (canvas.height/2)-this.image.height/2
 const offset = {
     x: -500,
@@ -61,6 +52,12 @@ const player = new Sprite({
     bg: playerImage,
     frames: {
         max:3
+    },
+    sprites:{
+        up: playerUpImage,
+        down: playerImage,
+        left: playerLeftImage,
+        right: playerRightImage
     }
 })
 const background = new Sprite({
@@ -77,17 +74,6 @@ const foreground = new Sprite({
     },
     bg: foregroundImage
   })
-class Boundary{
-    constructor({position}){
-        this.position = position
-        this.width =64
-        this.height =64
-    }
-    draw(){
-        c.fillStyle='rgba(255,0,0,0)'
-        c.fillRect(this.position.x, this.position.y, this.width, this.height)
-    }
-}
 
 const boundaries=[]
 collisionMapFtd.forEach((row,i) =>{
@@ -123,7 +109,10 @@ function animate(){
     })
     player.draw()
     foreground.draw()
+    player.moving=false
     if(keys.w.pressed && lastkey ==='w'){
+        player.moving = true
+        player.image=player.sprites.up
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
@@ -150,6 +139,8 @@ function animate(){
             
     }
     else if(keys.a.pressed && lastkey ==='a'){
+        player.moving = true
+        player.image=player.sprites.left
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
@@ -176,6 +167,8 @@ function animate(){
         
     }
     else if(keys.s.pressed && lastkey ==='s'){
+        player.moving = true
+        player.image=player.sprites.down
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
@@ -201,6 +194,8 @@ function animate(){
         })
     }
     else if(keys.d.pressed && lastkey ==='d'){
+        player.moving = true
+        player.image=player.sprites.right
         for (let i = 0; i < boundaries.length; i++) {
             const boundary = boundaries[i]
             if (
