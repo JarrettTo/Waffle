@@ -2,12 +2,19 @@ const canvas=document.querySelector('canvas')
 const c = canvas.getContext('2d')
 canvas.width =1024
 canvas.height = 576
+const collisionMapFtd = []
+for(let i=0;i<collisionMap.length;i+=70){
+    collisionMapFtd.push(collisionMap.slice(i,i+70))
+
+}
+
+
 c.fillStyle="white"
 c.fillRect(0,0,canvas.width, canvas.height)
 const image = new Image()
 image.src = '../Game Assets/WaffleVille.png'
 const playerImage = new Image()
-playerImage.src = '../Game Assets/Character/down.png'
+playerImage.src = '../Game Assets/Character/down.png' 
 const keys = {
     w: {
         pressed: false
@@ -22,37 +29,116 @@ const keys = {
         pressed: false
     },
 }
+
 class Sprite {
-    constructor({position, velocity, bg}){
+    constructor({position, velocity, bg, frames={max:1}}){
         this.position = position
         this.image = bg
+        this.frames=frames
+        this.image.onload=()=>{
+            this.width = this.image.width / this.frames.max
+            this.height = this.image.height
+        
+        }
+        
     }
     draw (){
-        c.drawImage(this.image, this.position.x, this.position.y)
+        c.drawImage(this.image,0,0,this.image.width/this.frames.max,this.image.height,this.position.x,this.position.y,this.image.width/this.frames.max,this.image.height)
     }
 }
+//(canvas.width/2)+ this.image.width/2+40, (canvas.height/2)-this.image.height/2
+const offset = {
+    x: -500,
+    y: -1600
+}
+const player = new Sprite({
+    position:{
+        x: (canvas.width/2)+ 96/2+40,
+        y: (canvas.height/2)-32/2
+    },
+    bg: playerImage,
+    frames: {
+        max:3
+    }
+})
 const background = new Sprite({
     position:{
-        x: -500,
-        y:-1600
+        x: offset.x,
+        y:offset.y
     },
     bg: image
 })
+class Boundary{
+    constructor({position}){
+        this.position = position
+        this.width =64
+        this.height =64
+    }
+    draw(){
+        c.fillStyle='red'
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
+
+const boundaries=[]
+collisionMapFtd.forEach((row,i) =>{
+    row.forEach((sym,j)=>{
+        if(sym === 552){
+            boundaries.push(new Boundary({
+                position: {
+                    x: j * 64 + offset.x,
+                    y: i * 64 + offset.y
+                }
+            }))
+        }
+        
+    })
+})
+const movables = [background,...boundaries]
+function rectCollision({rect1, rect2}){
+    return(
+        rect1.position.x + rect1.width >= rect2.position.x && 
+        rect1.position.x <= rect2.position.x + rect2.width &&
+        rect1.position.y <= rect2.position.y + rect2.height &&
+        rect1.position.y + rect1.height>= rect2.position.y 
+    )
+}
 function animate(){
     window.requestAnimationFrame(animate)
+    
     background.draw()
-    c.drawImage(playerImage,0,0,playerImage.width/3,playerImage.height,(canvas.width/2)+ playerImage.width/2+40, (canvas.height/2)-playerImage.height/2,playerImage.width/3,playerImage.height)
+    player.draw()
+    boundaries.forEach(boundary =>{
+        boundary.draw()
+        if(
+            rectCollision({
+                rect1: player,
+                rect2: boundary
+            })
+        ){
+            console.log("COL")
+        }
+    })
+    
     if(keys.w.pressed && lastkey ==='w'){
-        background.position.y= background.position.y +3
+        movables.forEach((movable)=>{
+            movable.position.y+=3
+        })
     }
     if(keys.a.pressed && lastkey ==='a'){
-        background.position.x= background.position.x +3
+        movables.forEach((movable)=>{
+            movable.position.x+=3
+        })
     }
     if(keys.s.pressed && lastkey ==='s'){
-        background.position.y= background.position.y -3
+        movables.forEach((movable)=>{
+            movable.position.y-=3
+        })
     }
     if(keys.d.pressed && lastkey ==='d'){
-        background.position.x= background.position.x -3
+        movables.forEach((movable)=>{
+            movable.position.x-=3
+        })
     }
 }
 animate()
