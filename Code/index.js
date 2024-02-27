@@ -56,7 +56,8 @@ const player = new Sprite({
     },
     bg: playerImage,
     frames: {
-        max:3
+        max:3,
+        hold: 15,
     },
     sprites:{
         up: playerUpImage,
@@ -173,11 +174,26 @@ function animate(){
                 player.moving=false
                 gsap.to('#overlappingDiv',{
                     opacity:1,
-                    repeat:4,
+                    repeat:3,
                     yoyo: true,
-                    duration: 0.4
+                    duration: 0.4,
+                    onComplete(){
+                    
+                        gsap.to("#overlappingDiv",{
+                            opacity: 1,
+                            duration: 0.4,
+                            onComplete(){
+                                animateBattle()
+                                gsap.to("#overlappingDiv",{
+                                    opacity: 0,
+                                    duration: 0.4
+                                })
+                                
+                            }
+                        })
+                    }
                 })
-                animateBattle();
+                
                 break
             }
         }
@@ -297,10 +313,7 @@ function animate(){
     }
 }
 animate()
-function animateBattle(){
-    window.requestAnimationFrame(animateBattle)
-    console.log("Animating Battle")
-}
+
 let lastkey=''
 window.addEventListener('keydown',(e) =>{
     switch(e.key){
@@ -338,4 +351,6 @@ window.addEventListener('keyup',(e) =>{
             break
     }
 })
+
+
 console.log("WTF")
