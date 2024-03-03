@@ -27,6 +27,14 @@ const playerLeftImage = new Image()
 playerLeftImage.src = '../Game Assets/Character/left.png' 
 const playerRightImage = new Image()
 playerRightImage.src = '../Game Assets/Character/right.png'
+const daffleImage = new Image()
+daffleImage.src = '../Game Assets/Character/daf_down.png' 
+const daffleUpImage = new Image()
+daffleUpImage.src = '../Game Assets/Character/daf_up.png' 
+const daffleLeftImage = new Image()
+daffleLeftImage.src = '../Game Assets/Character/daf_left.png' 
+const daffleRightImage = new Image()
+daffleRightImage.src = '../Game Assets/Character/daf_right.png'
 const keys = {
     w: {
         pressed: false
@@ -66,6 +74,24 @@ const player = new Sprite({
         right: playerRightImage
     }
 })
+
+const daffle_npc = new Sprite({
+    position:{
+        x: (canvas.width/2)+ 120/2+40+850,
+        y: (canvas.height/2)-40/2 +100
+    },
+    bg: daffleImage,
+    frames: {
+        max:3,
+        hold: 15,
+    },
+    sprites:{
+        up: daffleUpImage,
+        down: daffleImage,
+        left: daffleLeftImage,
+        right: daffleRightImage
+    }
+})
 const background = new Sprite({
     position:{
         x: offset.x,
@@ -95,22 +121,192 @@ collisionMapFtd.forEach((row,i) =>{
         
     })
 })
+const battle1 = new Battle({
+    id: 555,
+    status: false,
+    questions:[
+        {
+            prompt: 'Where was our first date?',
+            choices:['Ersao', 'Samgyupsalamat', 'Ajisen', 'Ichiro'],
+            answer: 'Ersao'
+        },
+        {
+            prompt: 'Who did you think was best looking in Grade 12?',
+            choices:['Justin To', 'Justin Tan', 'Diego', 'Kyle'],
+            answer: 'Diego'
+        },
+        {
+            prompt: 'When did I first fall in love with you?',
+            choices:['August 2019', 'November 2019', 'March 2020', 'February 2020'],
+            answer: 'August 2019'
+        },
+        {
+            prompt: 'Where did we have our first kiss?',
+            choices:['Glorietta', 'Greenbelt', 'BGC', 'SM Aura'],
+            answer: 'Glorietta'
+        },
+    ],
+    dialogue: ["Well played waffle. Seems like you havent completely forgotten about us.", "This doesn't end here, you'll see me again mwahahaha."]
+})
 
+const battle2 = new Battle({
+    id: 556,
+    status: false,
+    questions:[
+        {
+            prompt: 'Where was our first date?',
+            choices:['Ersao', 'Samgyupsalamat', 'Ajisen', 'Ichiro'],
+            answer: 3
+        },
+        {
+            prompt: 'Who did you think was best looking in Grade 12?',
+            choices:['Justin To', 'Justin Tan', 'Diego', 'Kyle'],
+            answer: 2
+        },
+        {
+            prompt: 'When did I first fall in love with you?',
+            choices:['August 2019', 'November 2019', 'March 2020', 'February 2020'],
+            answer: 0
+        },
+        {
+            prompt: 'Where did we have our first kiss?',
+            choices:['Glorietta', 'Greenbelt', 'BGC', 'SM Aura'],
+            answer: 0
+        },
+    ],
+    dialogue: ["Well played waffle. Seems like you havent completely forgotten about us.", "This doesn't end here, you'll see me again mwahahaha."]
+})
+
+const battle3 = new Battle({
+    id: 557,
+    status: false,
+    questions:[
+        {
+            prompt: 'Where was our first date?',
+            choices:['Ersao', 'Samgyupsalamat', 'Ajisen', 'Ichiro'],
+            answer: 3
+        },
+        {
+            prompt: 'Who did you think was best looking in Grade 12?',
+            choices:['Justin To', 'Justin Tan', 'Diego', 'Kyle'],
+            answer: 2
+        },
+        {
+            prompt: 'When did I first fall in love with you?',
+            choices:['August 2019', 'November 2019', 'March 2020', 'February 2020'],
+            answer: 0
+        },
+        {
+            prompt: 'Where did we have our first kiss?',
+            choices:['Glorietta', 'Greenbelt', 'BGC', 'SM Aura'],
+            answer: 0
+        },
+    ],
+    dialogue: ["Well played waffle. Seems like you havent completely forgotten about us.", "This doesn't end here, you'll see me again mwahahaha."]
+})
+
+const battle4 = new Battle({
+    id: 558,
+    status: false,
+    questions:[
+        {
+            prompt: 'Where was our first date?',
+            choices:['Ersao', 'Samgyupsalamat', 'Ajisen', 'Ichiro'],
+            answer: 3
+        },
+        {
+            prompt: 'Who did you think was best looking in Grade 12?',
+            choices:['Justin To', 'Justin Tan', 'Diego', 'Kyle'],
+            answer: 2
+        },
+        {
+            prompt: 'When did I first fall in love with you?',
+            choices:['August 2019', 'November 2019', 'March 2020', 'February 2020'],
+            answer: 0
+        },
+        {
+            prompt: 'Where did we have our first kiss?',
+            choices:['Glorietta', 'Greenbelt', 'BGC', 'SM Aura'],
+            answer: 0
+        },
+    ],
+    dialogue: ["Well played waffle. Seems like you havent completely forgotten about us.", "This doesn't end here, you'll see me again mwahahaha."]
+})
+
+const battle5 = new Battle({
+    id: 553,
+    status: false,
+    questions:[
+        {
+            prompt: 'Where was our first date?',
+            choices:['Ersao', 'Samgyupsalamat', 'Ajisen', 'Ichiro'],
+            answer: 3
+        },
+        {
+            prompt: 'Who did you think was best looking in Grade 12?',
+            choices:['Justin To', 'Justin Tan', 'Diego', 'Kyle'],
+            answer: 2
+        },
+        {
+            prompt: 'When did I first fall in love with you?',
+            choices:['August 2019', 'November 2019', 'March 2020', 'February 2020'],
+            answer: 0
+        },
+        {
+            prompt: 'Where did we have our first kiss?',
+            choices:['Glorietta', 'Greenbelt', 'BGC', 'SM Aura'],
+            answer: 0
+        },
+    ],
+    dialogue: ["Well played waffle. Seems like you havent completely forgotten about us.", "This doesn't end here, you'll see me again mwahahaha."]
+})
+
+const battle6 = new Battle({
+    id: 554,
+    status: false,
+    questions:[
+        {
+            prompt: 'Where was our first date?',
+            choices:['Ersao', 'Samgyupsalamat', 'Ajisen', 'Ichiro'],
+            answer: 3
+        },
+        {
+            prompt: 'Who did you think was best looking in Grade 12?',
+            choices:['Justin To', 'Justin Tan', 'Diego', 'Kyle'],
+            answer: 2
+        },
+        {
+            prompt: 'When did I first fall in love with you?',
+            choices:['August 2019', 'November 2019', 'March 2020', 'February 2020'],
+            answer: 0
+        },
+        {
+            prompt: 'Where did we have our first kiss?',
+            choices:['Glorietta', 'Greenbelt', 'BGC', 'SM Aura'],
+            answer: 0
+        },
+    ],
+    dialogue: ["Well played waffle. Seems like you havent completely forgotten about us.", "This doesn't end here, you'll see me again mwahahaha."]
+})
+
+const battleArray = [battle1 , battle2, battle3, battle4, battle5, battle6]
 const battleZones=[]
 battleZoneMap.forEach((row,i) =>{
     row.forEach((sym,j)=>{
-        if(sym === 552){
+        if(sym != 0){
             battleZones.push(new Boundary({
                 position: {
                     x: j * 64 + offset.x,
                     y: i * 64 + offset.y
-                }
+                    
+                },
+                sym: sym
             }))
         }
         
     })
 })
-const movables = [background,...boundaries,foreground, ...battleZones]
+const movables = [background,...boundaries,foreground, ...battleZones, daffle_npc]
 function rectCollision({rect1, rect2}){
     return(
         rect1.position.x + rect1.width >= rect2.position.x && 
@@ -121,6 +317,61 @@ function rectCollision({rect1, rect2}){
 }
 const battle={
     initiated: false
+}
+function faceWaffle(){
+    if(player.position.x - daffle_npc.position.x >  daffle_npc.position.y - player.position.y){
+        if(player.position.x > daffle_npc.position.x){
+            daffle_npc.bg = daffleRightImage
+        } else{
+            daffle_npc.bg = daffleRightImage
+        }
+        
+    }
+    
+}
+function waitForClick(element) {
+    return new Promise((resolve) => {
+        // Use a named function for the event listener to be able to remove it later
+        const listener = () => {
+            element.removeEventListener('click', listener);
+            resolve();
+        };
+        element.addEventListener('click', listener);
+    });
+}
+
+async function drawDialogue(battle_no){
+    battle.initiated=true
+    document.querySelector('#dialogueContainer').style.display = 'block'
+    document.querySelector('#dialogueBoxInfo').style.display = 'block'
+    for(let j =0; j<battle_no.dialogue.length; j++){
+
+        document.querySelector('#dialogueBoxInfo').innerHTML = battle_no.nextDialogue()
+        await waitForClick(document.querySelector('#dialogueContainer'));
+    }
+    document.querySelector('#dialogueContainer').style.display = 'none'
+    document.querySelector('#dialogueBoxInfo').style.display = 'none'
+    await moveDaffle(1250, 0)
+    battle.initiated=false
+}
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function moveDaffle(x, y) {
+    // Loop for moving in the x-direction
+    
+    if(x != 0) {
+        const step = x > 0 ? 2 : -2; // Determine direction of movement
+        daffle_npc.moving = true
+        daffle_npc.image= step ==2 ? daffle_npc.sprites.right : daffle_npc.sprites.left
+        while(x != 0) {
+            daffle_npc.position.x += step;
+            x -= step;
+            await sleep(2); // Wait for 50 milliseconds before next update
+        }
+    }
+    // Add similar logic for y-direction if needed
 }
 function animate(){
     const animationId = window.requestAnimationFrame(animate)
@@ -135,6 +386,8 @@ function animate(){
         battleZone.draw()
         
     })
+    
+    daffle_npc.draw()
     player.draw()
     foreground.draw()
     player.moving=false
@@ -155,6 +408,8 @@ function animate(){
                 battleZone.position.y + battleZone.height
                 ) -
                 Math.max(player.position.y, battleZone.position.y))
+            let index = battleArray.findIndex(element => element.id == battleZone.sym)
+      
             if (
               rectCollision({
                 rect1: player,
@@ -165,11 +420,15 @@ function animate(){
                     y: battleZone.position.y
                   }
                 }
-              }) 
+              }) && !battleArray[index].status
             ) {
-            
+                faceWaffle()
+                console.log("X C:", battleZone.position.x)
                 console.log("ILY")
                 window.cancelAnimationFrame(animationId)
+                audio.Map.stop()
+                audio.initBattle.play()
+                audio.battle.play()
                 battle.initiated = true
                 player.moving=false
                 gsap.to('#overlappingDiv',{
@@ -183,6 +442,7 @@ function animate(){
                             opacity: 1,
                             duration: 0.4,
                             onComplete(){
+                                initBattle(battle1)
                                 animateBattle()
                                 gsap.to("#overlappingDiv",{
                                     opacity: 0,
@@ -352,5 +612,12 @@ window.addEventListener('keyup',(e) =>{
     }
 })
 
-
+let clicked = false
+addEventListener('click', () => {
+  if (!clicked) {
+    audio.Map.loop = true;
+    audio.Map.play()
+    clicked = true
+  }
+})
 console.log("WTF")

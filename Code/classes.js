@@ -5,7 +5,7 @@
       image,
       frames = { max: 1, hold: 10 },
       sprites,
-      animate = false,
+      moving = false,
       rotation = 0,
       scale = 1
     }) {
@@ -18,7 +18,7 @@
       }
       this.image.src = image.src
   
-      this.animate = animate
+      this.moving = moving
       this.sprites = sprites
       this.opacity = 1
   
@@ -71,7 +71,7 @@
   
       c.restore()
   
-      if (!this.animate) return
+      if (!this.moving) return
   
       if (this.frames.max > 1) {
         this.frames.elapsed++
@@ -84,24 +84,26 @@
     }
   }*/
   class Sprite {
-    constructor({position, velocity, bg, frames={max:1, hold: 15}, sprites, moving, isEnemy=false, rotation = 0, name}){
+    constructor({position, velocity, bg, frames={max:1, hold: 15}, sprites, moving, rotation = 0}){
         this.position = position
-        this.image = bg
+        this.image = new Image()
         this.frames= {...frames, val: 0, elapsed: 0}
         this.sprites=sprites
         this.image.onload=()=>{
             this.width = this.image.width / this.frames.max
             this.height = this.image.height
         
-        }  
+        } 
+        this.image.src = bg.src 
         this.moving = moving
         this.opacity = 1
-        this.health = 100
-        this.isEnemy = isEnemy
+
+        
         this.rotation = rotation
-        this.name = name
+        
     }
     draw (){
+      
       c.save() 
       c.translate(this.position.x + this.width/2, this.position.y + this.height/2)
       c.rotate(this.rotation)
@@ -121,116 +123,17 @@
             else this.frames.val=0
         }
     }
-    attack({ attack, recipient, renderedSprites }) {
-      document.querySelector('#dialogueBox').style.display = 'block'
-      document.querySelector('#dialogueBox').innerHTML =
-        this.name + ' used ' + attack.name
-  
-      let healthBar = '#enemyHealthBar'
-      if (this.isEnemy) healthBar = '#playerHealthBar'
-  
-      let rotation = 1
-      if (this.isEnemy) rotation = -2.2
-  
-      recipient.health -= attack.damage
-      
-      switch (attack.name) {
-        case 'Fireball':
-          //audio.initFireball.play()
-          const fireballImage = new Image()
-          fireballImage.src = '../Game Assets/fireball.png'
-          const fireball = new Sprite({
-            position: {
-              x: this.position.x,
-              y: this.position.y
-            },
-            bg: fireballImage,
-            frames: {
-              max: 4,
-              hold: 10
-            },
-            animate: true,
-            rotation
-          })
-          renderedSprites.splice(1, 0, fireball)
-  
-          gsap.to(fireball.position, {
-            x: recipient.position.x,
-            y: recipient.position.y,
-            onComplete: () => {
-              // Enemy actually gets hit
-              //audio.fireballHit.play()
-              gsap.to(healthBar, {
-                width: recipient.health + '%'
-              })
-  
-              gsap.to(recipient.position, {
-                x: recipient.position.x + 10,
-                yoyo: true,
-                repeat: 5,
-                duration: 0.08
-              })
-  
-              gsap.to(recipient, {
-                opacity: 0,
-                repeat: 5,
-                yoyo: true,
-                duration: 0.08
-              })
-              renderedSprites.splice(1, 1)
-            }
-          })
-  
-          break
-        case 'Tackle':
-          const tl = gsap.timeline()
-  
-          let movementDistance = 20
-          if (this.isEnemy) movementDistance = -20
-  
-          tl.to(this.position, {
-            x: this.position.x - movementDistance
-          })
-            .to(this.position, {
-              x: this.position.x + movementDistance * 2,
-              duration: 0.1,
-              onComplete: () => {
-                // Enemy actually gets hit
-                audio.tackleHit.play()
-                gsap.to(healthBar, {
-                  width: recipient.health + '%'
-                })
-  
-                gsap.to(recipient.position, {
-                  x: recipient.position.x + 10,
-                  yoyo: true,
-                  repeat: 5,
-                  duration: 0.08
-                })
-  
-                gsap.to(recipient, {
-                  opacity: 0,
-                  repeat: 5,
-                  yoyo: true,
-                  duration: 0.08
-                })
-              }
-            })
-            .to(this.position, {
-              x: this.position.x
-            })
-          break
-      }
-    }
+    
+    
   } 
   class Monster extends Sprite {
     constructor({
       position,
       velocity,
-      image,
+      bg,
       frames = { max: 1, hold: 10 },
       sprites,
-      animate = false,
+      moving = false,
       rotation = 0,
       isEnemy = false,
       name,
@@ -239,16 +142,22 @@
       super({
         position,
         velocity,
-        image,
+        bg,
         frames,
         sprites,
-        animate,
+        moving,
         rotation
       })
       this.health = 100
+      
       this.isEnemy = isEnemy
       this.name = name
       this.attacks = attacks
+      if(name=="Daffle"){
+        console.log("X:", position.x)
+        console.log("Y:", position.y)
+      }
+      
     }
   
     faint() {
@@ -265,9 +174,15 @@
   
     attack({ attack, recipient, renderedSprites }) {
       document.querySelector('#dialogueBox').style.display = 'block'
-      document.querySelector('#dialogueBox').innerHTML =
+      if(!this.isEnemy){
+        document.querySelector('#dialogueBox').innerHTML ="You got that right! " +this.name + ' used ' + attack.name+"!"
+      }
+      else{
+        document.querySelector('#dialogueBox').innerHTML =
         this.name + ' used ' + attack.name
-  
+      }
+      
+      
       let healthBar = '#enemyHealthBar'
       if (this.isEnemy) healthBar = '#playerHealthBar'
   
@@ -280,18 +195,18 @@
         case 'Fireball':
           audio.initFireball.play()
           const fireballImage = new Image()
-          fireballImage.src = './img/fireball.png'
+          fireballImage.src = '../Game Assets/fireball.png'
           const fireball = new Sprite({
             position: {
               x: this.position.x,
               y: this.position.y
             },
-            image: fireballImage,
+            bg: fireballImage,
             frames: {
               max: 4,
               hold: 10
             },
-            animate: true,
+            moving: true,
             rotation
           })
           renderedSprites.splice(1, 0, fireball)
@@ -369,10 +284,11 @@
   class Boundary {
     static width = 48
     static height = 48
-    constructor({ position }) {
+    constructor({ position, sym }) {
       this.position = position
       this.width = 48
       this.height = 48
+      this.sym= sym
     }
   
     draw() {
@@ -388,7 +304,7 @@
       image,
       frames = { max: 1, hold: 10 },
       sprites,
-      animate = false,
+      moving = false,
       rotation = 0,
       scale = 1,
       dialogue = ['']
@@ -399,7 +315,7 @@
         image,
         frames,
         sprites,
-        animate,
+        moving,
         rotation,
         scale
       })
@@ -407,4 +323,26 @@
       this.dialogue = dialogue
       this.dialogueIndex = 0
     }
+  }
+
+  class Battle {
+    constructor({id, status, questions,dialogue}){
+      this.id = id
+      this.status = status
+      this.questions = questions
+      this.dialogue = dialogue
+      this.index = 0
+      this.q_index=0
+    }
+    nextDialogue(){
+      const res = this.dialogue[this.index]
+      this.index+=1
+      return res
+    }
+    nextQuestion(){
+      const res = this.questions[this.q_index]
+      this.q_index+=1
+      return res
+    }
+
   }
