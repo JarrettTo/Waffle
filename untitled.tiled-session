@@ -3,11 +3,13 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Game Assets/Map.tmx",
     "expandedProjectPaths": [
+        ".",
+        "Game Assets"
     ],
-    "exportAsImage.useCurrentScale": false,
-    "file.lastUsedOpenFilter": "All Files (*)",
+    "exportAsImage.useCurrentScale": true,
+    "file.lastUsedOpenFilter": "Tiled Projects (*.tiled-project)",
     "fileStates": {
         "Game Assets/Basic_Furniture.tsx": {
             "scaleInDock": 1,
@@ -21,12 +23,14 @@
             "scaleInDock": 1
         },
         "Game Assets/Battle tiles.tsx": {
-            "dynamicWrapping": true
+            "dynamicWrapping": true,
+            "scaleInDock": 1
         },
         "Game Assets/Battles.tsx": {
             "dynamicWrapping": false
         },
         "Game Assets/Chest.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1
         },
         "Game Assets/Collision.tsx": {
@@ -45,11 +49,14 @@
             "scaleInDock": 1
         },
         "Game Assets/Map.tmx": {
-            "scale": 1,
-            "selectedLayer": 44,
+            "expandedGroupLayers": [
+                58
+            ],
+            "scale": 4,
+            "selectedLayer": 42,
             "viewCenter": {
-                "x": 501,
-                "y": 408
+                "x": 560,
+                "y": 320
             }
         },
         "Game Assets/Map.tmx#Basic_Grass_Biom_things": {
@@ -73,36 +80,96 @@
         "Game Assets/Wooden House.tsx": {
             "scaleInDock": 1
         },
+        "Game Assets/black.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Game Assets/preview.tsx": {
             "dynamicWrapping": false
+        },
+        "boat.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "boats.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "char.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 5.5
         },
+        "daf_right.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "left.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "preview.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "right.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "up.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "waffle char.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "waffleboat.tmx": {
+            "scale": 6.642083333333333,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 60.07151370679382,
+                "y": 20.023837902264596
+            }
         }
     },
-    "last.exportedFilePath": "C:/Game/Game Assets",
-    "last.imagePath": "C:/Game/Game Assets",
-    "map.height": 1,
+    "last.exportedFilePath": "C:/Users/Jersey/OneDrive - De La Salle University - Manila/Documents/Waffle-main/Game Assets",
+    "last.imagePath": "C:/Users/Jersey/Documents/Waffle-main/Waffle-main/Game Assets",
+    "map.height": 50,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.width": 3,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 50,
     "openFiles": [
         "preview.tsx",
         "char.tsx",
         "Game Assets/Map.tmx",
-        "Game Assets/Basic_Furniture.tsx"
+        "Game Assets/Basic_Furniture.tsx",
+        "waffle char.tsx",
+        "boat.tsx",
+        "boats.tsx",
+        "waffleboat.tmx",
+        "left.tsx",
+        "daf_right.tsx",
+        "right.tsx",
+        "up.tsx",
+        "Game Assets/black.tsx"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
         "preview.tsx",
-        "Game Assets/Basic_Furniture.tsx",
-        "Game Assets/Map.tmx",
-        "char.tsx"
+        "char.tsx",
+        "Game Assets/black.tsx",
+        "up.tsx",
+        "right.tsx",
+        "daf_right.tsx",
+        "left.tsx",
+        "waffleboat.tmx",
+        "boats.tsx",
+        "boat.tsx",
+        "waffle char.tsx",
+        "Game Assets/Basic_Furniture.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {

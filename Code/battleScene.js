@@ -1,3 +1,7 @@
+// Using CommonJS
+
+
+
 let draggle
 let emby
 let renderedSprites
@@ -33,9 +37,11 @@ function drawChoicesAndPrompt(nextQ, battle_no) {
               })
               
               if (daffle.health <= 0) {
+                
                 queue.push(() => {
                   daffle.faint()
                   battle_no.status=true
+                  
                 })
                 queue.push(() => {
                   // fade back to black
@@ -44,13 +50,19 @@ function drawChoicesAndPrompt(nextQ, battle_no) {
                     onComplete: () => {
                       cancelAnimationFrame(battleAnimationId)
                       animate()
-                      drawDialogue(battle_no)
+                      drawDialogue(battle_no,battle_no.daffle_x, battle_no.daffle_y,battle_no.direction)
                       document.querySelector('#userInterface').style.display = 'none'
         
                       gsap.to('#overlappingDiv', {
                         opacity: 0
                       })
                       audio.Map.play()
+                      if(battle_no.id == 553){
+                        console.log("TESTING WHY SWAP BG")
+                        background.image.src = '../Game Assets/WaffleVille2.png'
+                      
+
+                      }
                     }
                   })
                 })
@@ -65,10 +77,47 @@ function drawChoicesAndPrompt(nextQ, battle_no) {
               // Implement incorrect answer logic here
           }
           // Logic to load the next question or update the game state
+          const randomAttack =
+          daffle.attacks[Math.floor(Math.random() * daffle.attacks.length)]
+  
+        queue.push(() => {
+          daffle.attack({
+            attack: randomAttack,
+            recipient: waffle,
+            renderedSprites
+          })
+  
+          if (waffle.health <= 0) {
+            battle_no.q_index=0
+            queue.push(() => {
+              waffle.faint()
+            })
+  
+            queue.push(() => {
+              // fade back to black
+              gsap.to('#overlappingDiv', {
+                opacity: 1,
+                onComplete: () => {
+                  cancelAnimationFrame(battleAnimationId)
+                  animate()
+                  document.querySelector('#userInterface').style.display = 'none'
+  
+                  gsap.to('#overlappingDiv', {
+                    opacity: 0
+                  })
+  
+                  battle.initiated = false
+                  audio.Map.play()
+                }
+              })
+            })
+          }
+        })
       });
       attacksBox.append(button);
+      
   });
-
+  
   document.querySelector('#question').innerHTML = nextQ.prompt;
 }
 
@@ -113,6 +162,7 @@ function initBattle(battle_no) {
             queue.push(() => {
               daffle.faint()
               battle_no.status=true
+
             })
             queue.push(() => {
               // fade back to black
@@ -121,7 +171,7 @@ function initBattle(battle_no) {
                 onComplete: () => {
                   cancelAnimationFrame(battleAnimationId)
                   animate()
-                  drawDialogue(battle_no)
+                  drawDialogue(battle_no,1250,0,"left")
                   document.querySelector('#userInterface').style.display = 'none'
     
                   gsap.to('#overlappingDiv', {
@@ -139,9 +189,6 @@ function initBattle(battle_no) {
           document.querySelector('#dialogueBox').style.display = 'block'
           document.querySelector('#dialogueBox').innerHTML ="I can't believe you forgot...ur pokemon went sleep sleep zzz"
         }
-        
-  
-        // daffle or enemy attacks right here
         const randomAttack =
           daffle.attacks[Math.floor(Math.random() * daffle.attacks.length)]
   
@@ -153,8 +200,10 @@ function initBattle(battle_no) {
           })
   
           if (waffle.health <= 0) {
+            battle_no.q_index=0
             queue.push(() => {
               waffle.faint()
+              
             })
   
             queue.push(() => {
@@ -177,6 +226,9 @@ function initBattle(battle_no) {
             })
           }
         })
+  
+        // daffle or enemy attacks right here
+        
       })
   
       

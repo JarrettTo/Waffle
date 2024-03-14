@@ -28,7 +28,18 @@
     </style>
 </head>
 <div style="display: inline-block; position: relative;">
-    <div id="overlappingDiv" style="background-color: black; width:100%; height:100%; position: absolute; top:0; right:0;bottom:0;left:0; opacity: 0; pointer-events: none;"></div>
+  <div id="letterBox" style="width: 60%; height: 90%;display: none; background-color: rgb(255, 251, 247); align-items:center; flex-direction: column; position: absolute; justify-self: center; top:10; right:0;bottom:0;left:0; border: 15px solid; border-color: rgb(250, 183, 111); border-radius: 15px;">
+    <div style="display:flex;align-items: start; margin-top:15px; width:90%">
+      <button style="padding: 10px; background-color: rgb(255, 251, 247);">X</button>
+
+    </div>
+    <div style="display:flex;align-items: start; margin-top:15px; width:90%; overflow-y: scroll;">
+      <p id="letterContent" style="width: 100%; line-height: 1.5;"></p>
+    </div>
+    
+  </div>  
+  <div id="overlappingDiv" style="background-color: black; width:100%; height:100%; position: absolute; top:0; right:0;bottom:0;left:0; opacity: 0; pointer-events: none;"></div>
+    
     <div id="dialogueContainer" style="display: none; width: 100%;">
       
       <div style="background-color: white; display: flex; height: 140; position: absolute; bottom: 0; left:0; right:0; border-top: 4px black solid">
@@ -152,8 +163,12 @@
 <script src="data/battles.js"></script>
 <script src="data/audio.js"></script>
 <script src="data/battle_zone.js"></script>
+<script src="data/ocean.js"></script>
+<script src="data/oceantiles.js"></script>
+<script src="data/chests.js"></script>
 <script src="data/attacks.js"></script>
 <script src="data/monsters.js"></script>
 <script src="classes.js"></script>
+<script src="config.js"></script>
 <script src="index.js"></script>
 <script src="battleScene.js"></script>

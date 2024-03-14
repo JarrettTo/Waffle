@@ -97,7 +97,7 @@
         this.image.src = bg.src 
         this.moving = moving
         this.opacity = 1
-
+        this.ocean=false
         
         this.rotation = rotation
         
@@ -326,13 +326,17 @@
   }
 
   class Battle {
-    constructor({id, status, questions,dialogue}){
+    constructor({id, status, questions,dialogue, daffle_x, daffle_y, direction}){
       this.id = id
       this.status = status
       this.questions = questions
       this.dialogue = dialogue
       this.index = 0
       this.q_index=0
+      this.daffle_x = daffle_x
+      this.daffle_y = daffle_y
+      this.direction = direction
+      
     }
     nextDialogue(){
       const res = this.dialogue[this.index]
