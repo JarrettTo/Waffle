@@ -36,7 +36,7 @@ c.fillRect(0,0,canvas.width, canvas.height)
 const image = new Image()
 image.src = getImageSource()
 const foregroundImage = new Image()
-foregroundImage.src = '../assets/Foreground.png'
+foregroundImage.src = '/Waffle/assets/Foreground.png'
 const playerImage = new Image()
 playerImage.src = '../assets/Character/down.png' 
 const playerUpImage = new Image()
