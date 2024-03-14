@@ -9,7 +9,7 @@ let battleAnimationId
 let queue
 
 const battleBackgroundImage = new Image()
-battleBackgroundImage.src='../Game Assets/battleBackground.png';
+battleBackgroundImage.src='../assets/battleBackground.png';
 const battleBackground = new Sprite({
     position:{
         x:0,
@@ -59,7 +59,7 @@ function drawChoicesAndPrompt(nextQ, battle_no) {
                       audio.Map.play()
                       if(battle_no.id == 553){
                         console.log("TESTING WHY SWAP BG")
-                        background.image.src = '../Game Assets/WaffleVille2.png'
+                        background.image.src = '../assets/WaffleVille2.png'
                       
 
                       }

@@ -195,7 +195,7 @@
         case 'Fireball':
           audio.initFireball.play()
           const fireballImage = new Image()
-          fireballImage.src = '../Game Assets/fireball.png'
+          fireballImage.src = '../assets/fireball.png'
           const fireball = new Sprite({
             position: {
               x: this.position.x,

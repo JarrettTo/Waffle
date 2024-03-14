@@ -1,5 +1,5 @@
 // config.js
-let imageSource = '../Game Assets/WaffleVille.png';
+let imageSource = '../assets/WaffleVille.png';
 
 function getImageSource() {
     return imageSource;
