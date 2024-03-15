@@ -36,31 +36,31 @@ c.fillRect(0,0,canvas.width, canvas.height)
 const image = new Image()
 image.src = getImageSource()
 const foregroundImage = new Image()
-foregroundImage.src = '/Waffle/assets/Foreground.png'
+foregroundImage.src = './assets/Foreground.png'
 const playerImage = new Image()
-playerImage.src = '../assets/Character/down.png' 
+playerImage.src = './assets/Character/down.png' 
 const playerUpImage = new Image()
-playerUpImage.src = '../assets/Character/up.png' 
+playerUpImage.src = './assets/Character/up.png' 
 const playerLeftImage = new Image()
-playerLeftImage.src = '../assets/Character/left.png' 
+playerLeftImage.src = './assets/Character/left.png' 
 const playerRightImage = new Image()
-playerRightImage.src = '../assets/Character/right.png'
+playerRightImage.src = './assets/Character/right.png'
 const playerBoatImage = new Image()
-playerBoatImage.src = '../assets/Character/down_boat.png' 
+playerBoatImage.src = './assets/Character/down_boat.png' 
 const playerUpBoatImage = new Image()
-playerUpBoatImage.src = '../assets/Character/up_boat.png' 
+playerUpBoatImage.src = './assets/Character/up_boat.png' 
 const playerLeftBoatImage = new Image()
-playerLeftBoatImage.src = '../assets/Character/left_boat.png' 
+playerLeftBoatImage.src = './assets/Character/left_boat.png' 
 const playerRightBoatImage = new Image()
-playerRightBoatImage.src = '../assets/Character/right_boat.png'
+playerRightBoatImage.src = './assets/Character/right_boat.png'
 const daffleImage = new Image()
-daffleImage.src = '../assets/Character/daf_down.png' 
+daffleImage.src = './assets/Character/daf_down.png' 
 const daffleUpImage = new Image()
-daffleUpImage.src = '../assets/Character/daf_up.png' 
+daffleUpImage.src = './assets/Character/daf_up.png' 
 const daffleLeftImage = new Image()
-daffleLeftImage.src = '../assets/Character/daf_left.png' 
+daffleLeftImage.src = './assets/Character/daf_left.png' 
 const daffleRightImage = new Image()
-daffleRightImage.src = '../assets/Character/daf_right.png'
+daffleRightImage.src = './assets/Character/daf_right.png'
 const keys = {
     w: {
         pressed: false
@@ -663,7 +663,7 @@ function animate(){
                 }) && doorCheck
               ) {
                 console.log("INSIDE HOUSE")
-                background.image.src="../assets/Final House.png"
+                background.image.src="./assets/Final House.png"
                 foreground.opacity=0
                 for(let j=0;  j< chests.length; j++){
                   if(chests[j].position.x == boundary.position.x && chests[j].position.y == boundary.position.y){
@@ -854,7 +854,7 @@ function animate(){
                 }) && doorCheck
               ) {
                 console.log("OUTSIDE HOUSE")
-                background.image.src="../assets/WaffleVille2.png"
+                background.image.src="./assets/WaffleVille2.png"
                 foreground.opacity=100
                
 

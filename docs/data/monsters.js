@@ -1,7 +1,7 @@
 const embyImage = new Image()
-embyImage.src = '../assets/embySprite.png'
+embyImage.src = './assets/embySprite.png'
 const draggleImage = new Image()
-draggleImage.src = '../assets/draggleSprite.png'
+draggleImage.src = './assets/draggleSprite.png'
 const monsters = {
     Waffle: {
       position: {
@@ -9,7 +9,7 @@ const monsters = {
         y: 325
       },
       bg: {
-        src: '../assets/embySprite.png'
+        src: './assets/embySprite.png'
       },
       frames: {
         max: 4,
@@ -25,7 +25,7 @@ const monsters = {
         y: 100
       },
       bg: {
-        src: '../assets/draggleSprite.png'
+        src: './assets/draggleSprite.png'
       },
       frames: {
         max: 4,
